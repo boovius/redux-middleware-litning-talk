@@ -4,9 +4,9 @@ export default class Chat extends React.Component {
   render(){
     return (
       <div>
-        hello world
+        <div className='conversation'></div>
+        <div className='message'></div>
       </div>
     )
   }
-
 }
