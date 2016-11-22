@@ -4,7 +4,11 @@ export default class Message extends Component {
   render() {
     const classes = this.props.authored ? 'message authored' : 'message received';
     return(
-      <div className={classes}>{this.props.content}</div>
+      <div className='message-container clearfix'>
+        <div className={classes}>
+          {this.props.content}
+        </div>
+      </div>
     )
   }
 }
