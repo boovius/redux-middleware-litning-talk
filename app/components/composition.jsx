@@ -21,6 +21,7 @@ export default class Composition extends Component {
     }
 
     this.props.action(this.state.text);
+    this.setState({text: ''});
   }
 
   render() {

@@ -58,6 +58,7 @@ describe('Composition', ()=>{
 
           expect(action.called).to.eql(true)
           expect(action.lastCall.args[0]).to.eql(textInput);
+          expect(composition.state('text')).to.eql('');
         });
       });
 
