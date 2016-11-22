@@ -26,7 +26,7 @@ export default class Composition extends Component {
 
   render() {
     return(
-      <div>
+      <div className='composition'>
         <input
           type='text'
           value={this.state.text}
