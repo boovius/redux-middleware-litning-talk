@@ -1,14 +1,14 @@
 import Message from '../message';
 
 describe('Message', ()=>{
-  let message, messageData;
+  let component, messageData;
 
   beforeEach(()=>{
     messageData = {
       authored: true,
       content: 'content'
     };
-    message = mount(
+    component = mount(
       <Message
         authored={messageData.authored}
         content={messageData.content}
@@ -18,20 +18,21 @@ describe('Message', ()=>{
 
   describe('Initialization', ()=>{
     it('has content and authored prope and has message class', ()=>{
-      expect(message.prop('authored')).to.eql(messageData.authored);
-      expect(message.prop('content')).to.eql(messageData.content);
-      expect(message.find('div').hasClass('message')).to.eql(true);
+      expect(component.prop('authored')).to.eql(messageData.authored);
+      expect(component.prop('content')).to.eql(messageData.content);
+      expect(component.find('.message').length).to.eql(1);
     });
   });
 
   describe('Layout', ()=>{
     it('has text of its content', ()=> {
-      expect(message.text()).to.eql(messageData.content);
+      expect(component.text()).to.eql(messageData.content);
     });
 
     context('when message authored', ()=>{
       it('has authored class', ()=>{
-        expect(message.find('div').hasClass('authored')).to.eql(true);
+        const message = component.find('.message')
+        expect(message.hasClass('authored')).to.eql(true);
       });
     });
 
@@ -41,7 +42,7 @@ describe('Message', ()=>{
           authored: false,
           content: 'content'
         };
-        message = mount(
+        component = mount(
           <Message
             authored={messageData.authored}
             content={messageData.content}
@@ -50,7 +51,8 @@ describe('Message', ()=>{
       });
 
       it('has received class', ()=>{
-        expect(message.find('div').hasClass('received')).to.eql(true);
+        const message = component.find('.message')
+        expect(message.hasClass('received')).to.eql(true);
       });
     });
   });
