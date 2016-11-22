@@ -4,10 +4,16 @@ import Message from './message';
 export default class Conversation extends Component {
   _renderMessages() {
     return this.props.messages.map((m,i) => {
+      let authored;
+      if (m.sender === this.props.author) {
+        authored = true;
+      } else {
+        authored = false;
+      }
       return(
         <Message
           key={i}
-          sender={m.sender}
+          authored={authored}
           content={m.content}
           />
       )
@@ -16,7 +22,7 @@ export default class Conversation extends Component {
 
   render() {
     return(
-      <div>
+      <div className='conversation'>
         {this._renderMessages()}
       </div>
     )

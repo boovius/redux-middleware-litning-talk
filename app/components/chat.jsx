@@ -19,8 +19,8 @@ export default class Chat extends React.Component {
 
   render(){
     return (
-      <div>
-        <Conversation messages={this.state.messages} />
+      <div className='chat'>
+        <Conversation author={this.props.author} messages={this.state.messages} />
         <Composition action={this.addMessage} />
       </div>
     )
