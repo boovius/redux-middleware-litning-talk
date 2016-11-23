@@ -1,26 +1,25 @@
 import React from 'react';
 import Conversation from './conversation';
 import Composition from './composition';
+import * as firebase from 'firebase';
 
 export default class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.addMessage = this.addMessage.bind(this);
-    this.state = {
-      messages: this.props.messages
-    };
+    this.db = firebase.database().ref('messages');
   }
 
   addMessage(text) {
-    let messages = this.state.messages;
-    messages.push({sender: '', content: text});
-    this.setState({messages});
+    const message = {sender: '', content: text};
+    this.db.push(message);
   }
 
   render(){
+    console.log('chat component render');
     return (
       <div className='chat'>
-        <Conversation author={this.props.author} messages={this.state.messages} />
+        <Conversation author={this.props.author} messages={this.props.messages} />
         <Composition action={this.addMessage} />
       </div>
     )
