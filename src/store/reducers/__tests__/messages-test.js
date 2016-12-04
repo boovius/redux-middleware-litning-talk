@@ -1,0 +1,104 @@
+import { RECEIVE_MESSAGES, ADD_MESSAGE } from '../../../constants';
+import deepFreeze from 'deep-freeze';
+import messages from '../messages';
+
+describe('messages reducer', () => {
+  describe(RECEIVE_MESSAGES, () => {
+    const stateBefore = [];
+    const messageData = {
+      'message-1-uid': {
+        author: {
+          name: 'name-1',
+          uid: 'author-1-uid',
+        },
+        content: 'message-1'
+      },
+      'message-2-uid': {
+        author: {
+          name: 'name-2',
+          uid: 'author-2-uid',
+        },
+        content: 'message-2'
+      }
+    }
+
+    const action = {
+      type: RECEIVE_MESSAGES,
+      data: messageData
+    };
+
+    const stateAfter = [
+      {
+        author: {
+          name: 'name-1',
+          uid: 'author-1-uid',
+        },
+        content: 'message-1'
+      },
+      {
+        author: {
+          name: 'name-2',
+          uid: 'author-2-uid',
+        },
+        content: 'message-2'
+      }
+    ];
+
+    deepFreeze(stateBefore);
+    deepFreeze(action);
+    it('sets messages to data received', () => {
+      expect(messages(stateBefore, action)).to.eql(stateAfter);
+    });
+  });
+
+  describe(ADD_MESSAGE, () => {
+    const stateBefore = [];
+    const messageData = {
+      'message-1-uid': {
+        author: {
+          name: 'name-1',
+          uid: 'author-1-uid',
+        },
+        content: 'message-1'
+      },
+      'message-2-uid': {
+        author: {
+          name: 'name-2',
+          uid: 'author-2-uid',
+        },
+        content: 'message-2'
+      }
+    }
+
+    const action = {
+      type: RECEIVE_MESSAGES,
+      content: 'new-message'
+    };
+
+    const stateAfter = [
+      {
+        author: {
+          name: 'name-1',
+          uid: 'author-1-uid',
+        },
+        content: 'message-1'
+      },
+      {
+        author: {
+          name: 'name-2',
+          uid: 'author-2-uid',
+        },
+        content: 'message-2'
+      },
+      {
+        content: 'new-message'
+      }
+    ];
+
+    deepFreeze(stateBefore);
+    deepFreeze(action);
+    it('sets messages to data received', () => {
+      expect(messages(stateBefore, action)).to.eql(stateAfter);
+    });
+  });
+});

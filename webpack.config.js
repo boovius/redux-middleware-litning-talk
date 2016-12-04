@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    './index',
+    './src/index',
   ],
 
   output: {
@@ -12,6 +12,8 @@ module.exports = {
     publicPath: '/static/',
     filename: 'index.js',
   },
+
+  devtool: 'eval-source-maps',
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

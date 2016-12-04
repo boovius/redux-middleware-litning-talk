@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Message from './message';
 
-export default class Conversation extends Component {
+export class Conversation extends Component {
   _renderMessages() {
     return this.props.messages.map((m,i) => {
       let authored;
-      if (m.sender === this.props.author) {
+      if (i % 2 === 0) {
         authored = true;
       } else {
         authored = false;
@@ -29,3 +30,10 @@ export default class Conversation extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    messages: state.messages
+  }
+}
+
+export default connect(mapStateToProps)(Conversation);
