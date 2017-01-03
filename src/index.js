@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import { Provider } from 'react-redux';
 import store from './store';
-import { messagesRef } from './database/firebase.config';
+import { messagesRef } from './database';
 import { RECEIVE_MESSAGES } from './constants';
 
 console.log(store.getState());

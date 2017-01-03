@@ -11,7 +11,7 @@ export const Composition = ( { dispatch }) => {
         e.preventDefault();
         dispatch({
           type: ADD_MESSAGE,
-          content: input.value
+          message: { text: input.value }
         });
         input.value = '';
       }}>
