@@ -15,7 +15,8 @@ export class Conversation extends Component {
         <Message
           key={i}
           authored={authored}
-          content={m.content}
+          text={m.text}
+          sunk={m.sunk}
           />
       )
     });
