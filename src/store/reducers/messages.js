@@ -6,9 +6,10 @@ const messages = (
 ) => {
   switch(action.type) {
     case RECEIVE_MESSAGES:
-      return Object.keys(action.data).map(key => action.data[key]);
+      console.log('receiving messages');
+      return Object.keys(action.data).map(key => Object.assign({}, action.data[key], {sunk: true}));
     case ADD_MESSAGE:
-      return [...state, {content: action.content}];
+      return [...state, {text: action.text, sunk: false}];
     default:
       return state;
   }

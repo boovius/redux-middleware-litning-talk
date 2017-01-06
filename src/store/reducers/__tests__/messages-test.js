@@ -11,14 +11,14 @@ describe('messages reducer', () => {
           name: 'name-1',
           uid: 'author-1-uid',
         },
-        content: 'message-1'
+        text: 'message-1'
       },
       'message-2-uid': {
         author: {
           name: 'name-2',
           uid: 'author-2-uid',
         },
-        content: 'message-2'
+        text: 'message-2'
       }
     }
 
@@ -33,14 +33,16 @@ describe('messages reducer', () => {
           name: 'name-1',
           uid: 'author-1-uid',
         },
-        content: 'message-1'
+        text: 'message-1',
+        sunk: true
       },
       {
         author: {
           name: 'name-2',
           uid: 'author-2-uid',
         },
-        content: 'message-2'
+        text: 'message-2',
+        sunk: true
       }
     ];
 
@@ -52,27 +54,28 @@ describe('messages reducer', () => {
   });
 
   describe(ADD_MESSAGE, () => {
-    const stateBefore = [];
-    const messageData = {
-      'message-1-uid': {
+    const stateBefore = [
+      {
         author: {
           name: 'name-1',
           uid: 'author-1-uid',
         },
-        content: 'message-1'
+        text: 'message-1',
+        sunk: true
       },
-      'message-2-uid': {
+      {
         author: {
           name: 'name-2',
           uid: 'author-2-uid',
         },
-        content: 'message-2'
+        text: 'message-2',
+        sunk: true
       }
-    }
+    ];
 
     const action = {
-      type: RECEIVE_MESSAGES,
-      content: 'new-message'
+      type: ADD_MESSAGE,
+      text: 'new-message'
     };
 
     const stateAfter = [
@@ -81,17 +84,20 @@ describe('messages reducer', () => {
           name: 'name-1',
           uid: 'author-1-uid',
         },
-        content: 'message-1'
+        text: 'message-1',
+        sunk: true
       },
       {
         author: {
           name: 'name-2',
           uid: 'author-2-uid',
         },
-        content: 'message-2'
+        text: 'message-2',
+        sunk: true
       },
       {
-        content: 'new-message'
+        text: 'new-message',
+        sunk: false
       }
     ];
 
