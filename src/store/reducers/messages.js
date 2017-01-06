@@ -9,7 +9,7 @@ const messages = (
       console.log('receiving messages');
       return Object.keys(action.data).map(key => Object.assign({}, action.data[key], {sunk: true}));
     case ADD_MESSAGE:
-      return [...state, {text: action.text, sunk: false}];
+      return [...state, Object.assign({}, action.message, {sunk: false})];
     default:
       return state;
   }

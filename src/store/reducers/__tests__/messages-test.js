@@ -75,7 +75,7 @@ describe('messages reducer', () => {
 
     const action = {
       type: ADD_MESSAGE,
-      text: 'new-message'
+      message: {text: 'new-message'}
     };
 
     const stateAfter = [
