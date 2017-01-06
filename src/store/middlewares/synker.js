@@ -10,8 +10,7 @@ const synker = store => next => action => {
     result = next(action)
 
     console.log('pushing to db')
-    messagesRef.push(action.message, () => {
-    })
+    messagesRef.push(action.message, () => {})
   } else {
     result = next(action)
   }
