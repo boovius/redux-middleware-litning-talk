@@ -19,6 +19,9 @@
       float: right;
       text-align: right;
     }
+    .sunk {
+      box-shadow: 2px 2px 2px green;
+    }
   }
   .message-container:after {
     content: '';
