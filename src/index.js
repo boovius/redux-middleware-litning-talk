@@ -6,10 +6,11 @@ import store from './store';
 import { messagesRef } from './database';
 import { RECEIVE_MESSAGES } from './constants';
 
-console.log(store.getState());
+console.log('initial state', store.getState());
 
 messagesRef.on('value', ( snapshot ) => {
-  if (!snapshot.val() === null) {
+  console.log('getting snapshot', snapshot.val());
+  if (!(snapshot.val() === null)) {
     store.dispatch({
       type: RECEIVE_MESSAGES,
       data: snapshot.val()
