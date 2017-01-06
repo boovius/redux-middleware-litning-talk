@@ -6,27 +6,29 @@ describe('Message', ()=>{
   beforeEach(()=>{
     messageData = {
       authored: true,
-      content: 'content'
+      text: 'text',
+      sunk: true
     };
     component = mount(
       <Message
         authored={messageData.authored}
-        content={messageData.content}
+        text={messageData.text}
+        sunk={messageData.sunk}
         />
     );
   });
 
   describe('Initialization', ()=>{
-    it('has content and authored prope and has message class', ()=>{
+    it('has text and authored prope and has message class', ()=>{
       expect(component.prop('authored')).to.eql(messageData.authored);
-      expect(component.prop('content')).to.eql(messageData.content);
+      expect(component.prop('text')).to.eql(messageData.text);
       expect(component.find('.message').length).to.eql(1);
     });
   });
 
   describe('Layout', ()=>{
-    it('has text of its content', ()=> {
-      expect(component.text()).to.eql(messageData.content);
+    it('has text of its text', ()=> {
+      expect(component.text()).to.eql(messageData.text);
     });
 
     context('when message authored', ()=>{
@@ -38,14 +40,10 @@ describe('Message', ()=>{
 
     context('when message not authored', ()=>{
       beforeEach(()=>{
-        messageData = {
-          authored: false,
-          content: 'content'
-        };
         component = mount(
           <Message
-            authored={messageData.authored}
-            content={messageData.content}
+            authored={false}
+            text={messageData.text}
             />
         );
       });
@@ -53,6 +51,33 @@ describe('Message', ()=>{
       it('has received class', ()=>{
         const message = component.find('.message')
         expect(message.hasClass('received')).to.eql(true);
+      });
+    });
+
+    context('when message is sunk', () => {
+      it('has sunk class', ()=>{
+        const message = component.find('.message')
+        expect(message.hasClass('sunk')).to.eql(true);
+      });
+    });
+
+    context('when message not sunk', ()=>{
+      beforeEach(()=>{
+        messageData = {
+          authored: false,
+          text: 'text'
+        };
+        component = mount(
+          <Message
+            sunk={false}
+            text={messageData.text}
+            />
+        );
+      });
+
+      it('has unsunk class', ()=>{
+        const message = component.find('.message')
+        expect(message.hasClass('unsunk')).to.eql(true);
       });
     });
   });
