@@ -33,7 +33,8 @@ export class Conversation extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    user: state.user
   }
 }
 
