@@ -1,6 +1,6 @@
 import { Composition } from '../composition';
 
-describe.only('Composition', ()=>{
+describe('Composition', ()=>{
   let action, composition, button, form;
 
   beforeEach(()=>{
