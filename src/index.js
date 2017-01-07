@@ -1,24 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
 import { Provider } from 'react-redux';
 import store from './store';
-import { messagesRef } from './database';
-import { RECEIVE_MESSAGES } from './constants';
+import './initializers';
+import App from './app';
 
 console.log('initial state', store.getState());
-
-messagesRef.on('value', ( snapshot ) => {
-  console.log('getting snapshot', snapshot.val());
-  if (!(snapshot.val() === null)) {
-    store.dispatch({
-      type: RECEIVE_MESSAGES,
-      data: snapshot.val()
-    });
-  } else {
-    console.log('database empty');
-  }
-});
 
 ReactDOM.render(
   <Provider store={store}>
