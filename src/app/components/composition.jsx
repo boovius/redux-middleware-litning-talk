@@ -37,7 +37,14 @@ export class Composition extends React.Component {
   }
 }
 
-export default connect(
-  {},
-  { send: (text) => { dispatch(addMessage) }} )
-(Composition);
+function mapStateToProps() {
+  return {}
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    send: (text) => { dispatch(addMessage) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Composition);
