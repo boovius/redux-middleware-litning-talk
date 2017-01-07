@@ -1,0 +1,42 @@
+#app {
+  .chat {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+  }
+  .message-container {
+    margin-bottom: 10px;
+
+    .message {
+      background-color: #ccc;
+      border-radius: 10px;
+      padding: 5px;
+      float: left;
+      width: 40%;
+    }
+    .authored {
+      background-color: blue;
+      float: right;
+      text-align: right;
+    }
+    .sunk {
+      box-shadow: 2px 2px 2px green;
+    }
+  }
+  .message-container:after {
+    content: '';
+    display: table;
+    clear:both;
+  }
+  .composition {
+    margin-top: 20px;
+    input {
+      width: 80%;
+      padding: 5px;
+    }
+    button {
+      width: 20%;
+      padding: 7px;
+    }
+  }
+}

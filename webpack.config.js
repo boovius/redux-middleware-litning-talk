@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    './index',
+    './src/index',
   ],
 
   output: {
@@ -13,11 +13,17 @@ module.exports = {
     filename: 'index.js',
   },
 
+  devtool: 'eval-source-maps',
+
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
+
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
 
   module: {
     loaders: [
@@ -26,7 +32,7 @@ module.exports = {
         loaders: ['style', 'css', 'sass']
       },
       {
-        test: /\.js$/,
+        test: /(\.js?$)|(\.jsx?$)/,
         exclude: /node_modules/,
         loaders: ['babel']
       },
