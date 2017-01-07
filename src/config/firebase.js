@@ -10,9 +10,12 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.database();
+export const db = firebase.database();
 
 export const messagesRef = db.ref().child('messages');
 
-export default db;
+export const auth = firebase.auth();
 
+export const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+
+export default firebase;
