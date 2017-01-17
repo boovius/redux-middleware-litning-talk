@@ -1,4 +1,8 @@
-import { ADD_MESSAGE, RECEIVE_USER } from './constants';
+import {
+  ADD_MESSAGE,
+  RECEIVE_USER,
+  RECEIVE_MESSAGES
+} from './constants';
 
 export function addMessage(text) {
   return {
@@ -15,5 +19,12 @@ export function receiveUser(user) {
       displayName: user.displayName,
       email: user.email
     }
+  }
+}
+
+export function receiveMessages(data) {
+  return {
+    type: RECEIVE_MESSAGES,
+    data
   }
 }

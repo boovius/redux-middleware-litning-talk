@@ -1,14 +1,11 @@
 import store from '../store';
-import { RECEIVE_MESSAGES } from '../constants';
+import { receiveMessages } from '../actions';
 import { messagesRef } from '../config/firebase';
 
 messagesRef.on('value', ( snapshot ) => {
   console.log('getting snapshot', snapshot.val());
   if (!(snapshot.val() === null)) {
-    store.dispatch({
-      type: RECEIVE_MESSAGES,
-      data: snapshot.val()
-    });
+    store.dispatch(receiveMessages(snapshot.val()));
   } else {
     console.log('database empty');
   }
