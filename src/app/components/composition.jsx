@@ -43,7 +43,7 @@ function mapStateToProps() {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    send: (text) => { dispatch(addMessage) }
+    send: (text) => { dispatch(addMessage(text)) }
   }
 }
 

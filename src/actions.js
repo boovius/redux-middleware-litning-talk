@@ -1,8 +1,8 @@
 import { ADD_MESSAGE, RECEIVE_USER } from './constants';
 
 export function addMessage(text) {
-  return ({
-    type: c.ADD_MESSAGE,
+  return {
+    type: ADD_MESSAGE,
     message: { text }
   }
 }
