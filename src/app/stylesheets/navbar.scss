@@ -1,0 +1,20 @@
+#navbar {
+  height: 60px;
+  background: #e6e6e6;
+
+  .dropdown {
+    float: right;
+    padding-right: 20px;
+
+    .dropdown-content {
+      display: none;
+      list-style: none;
+      padding: 0;
+      background: #e6e6e6;
+    }
+
+    &:hover .dropdown-content {
+      display: block;
+    }
+  }
+}
