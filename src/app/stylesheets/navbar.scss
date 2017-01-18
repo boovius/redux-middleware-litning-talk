@@ -1,20 +1,25 @@
 #navbar {
   height: 60px;
   background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 
   .dropdown {
-    float: right;
-    padding-right: 20px;
+    position: relative;
 
     .dropdown-content {
-      display: none;
+      position: absolute;
+      right: -20;
       list-style: none;
-      padding: 0;
+      padding: 20px;
       background: #e6e6e6;
     }
 
-    &:hover .dropdown-content {
-      display: block;
+    .dropdown-title:hover, .link:hover a {
+      background: #868686;
+      cursor: pointer;
     }
   }
 }
