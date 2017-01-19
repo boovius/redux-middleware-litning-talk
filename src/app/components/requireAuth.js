@@ -4,11 +4,8 @@ import { connect } from 'react-redux';
 export default (ComposedComponent) => {
   class Authenticater extends Component {
     componentWillMount() {
-      console.log('mounting authenticated');
-
       if (!this.props.isAuthenticated) {
         console.log('not authenticated');
-
         this.context.router.push('login')
       }
     }

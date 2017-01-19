@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { auth, facebookAuthProvider } from '../../config/firebase';
-import { receiveUser } from '../../actions';
+import { toggleAuth } from '../../actions';
 
 export class Login extends Component {
   constructor() {
@@ -13,7 +13,13 @@ export class Login extends Component {
     e.preventDefault();
 
     auth.signInWithPopup(facebookAuthProvider).then((authResult) => {
-      this.props.addAuth(authResult.user);
+      const user = {
+        uid: authResult.user.uid,
+        displayName: authResult.user.displayName,
+        email: authResult.user.email,
+      }
+      this.props.addAuth(user);
+      this.context.router.push('/');
     }).catch((error) => {
       console.log('auth error', error);
     });
@@ -26,13 +32,17 @@ export class Login extends Component {
   }
 }
 
+Login.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 function mapStateToProps() {
   return {}
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    addAuth: (user) => { dispatch(receiveUser(user)) }
+    addAuth: (user) => { dispatch(toggleAuth(user)) }
   }
 }
 
