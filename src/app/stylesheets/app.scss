@@ -1,6 +1,11 @@
 @import './navbar.scss';
 
 #app {
+  a {
+    text-decoration: none;
+    color: #226a7c;
+  }
+
   .chat {
     width: 50%;
     margin: auto;
