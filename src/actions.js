@@ -1,7 +1,8 @@
 import {
   ADD_MESSAGE,
   RECEIVE_USER,
-  RECEIVE_MESSAGES
+  RECEIVE_MESSAGES,
+  TOGGLE_AUTH
 } from './constants';
 
 export function addMessage(text) {
@@ -26,5 +27,11 @@ export function receiveMessages(data) {
   return {
     type: RECEIVE_MESSAGES,
     data
+  }
+}
+
+export function toggleAuth() {
+  return {
+    type: TOGGLE_AUTH
   }
 }
