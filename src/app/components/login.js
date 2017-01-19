@@ -27,7 +27,11 @@ export class Login extends Component {
 
   render() {
     return (
-      <a href='#' onClick={this.signin}>login with facebook</a>
+      <div id='logins'>
+        <a href='#' onClick={this.signin}>
+          login with facebook
+        </a>
+      </div>
     )
   }
 }
