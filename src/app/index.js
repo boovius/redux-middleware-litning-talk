@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './stylesheets/normalize.scss';
 import './stylesheets/app.scss';
 
 import Navbar from './components/navbar';
