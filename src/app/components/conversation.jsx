@@ -4,17 +4,14 @@ import Message from './message';
 
 export class Conversation extends Component {
   _renderMessages() {
-    return this.props.messages.map((m,i) => {
-      let authored;
-      if (i % 2 === 0) {
-        authored = true;
-      } else {
-        authored = false;
-      }
+    const { messages, user } = this.props;
+    return messages.map((message) => {
+      const authored = message.authorUid === user.uid;
       return(
         <Message
           key={i}
           authored={authored}
+          author={user.displayName}
           text={m.text}
           sunk={m.sunk}
           />

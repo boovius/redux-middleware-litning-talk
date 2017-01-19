@@ -17,11 +17,16 @@ export default class Message extends Component {
     return classes
   }
 
+  _author() {
+    return this.props.author;
+  }
+
   render() {
     return(
       <div className='message-container'>
         <div className={this._classes()}>
           {this.props.text}
+          {this._author()}
         </div>
       </div>
     )

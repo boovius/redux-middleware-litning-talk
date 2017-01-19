@@ -18,7 +18,7 @@ export class Composition extends React.Component {
     e.preventDefault();
     const { text } = this.state
     if (text === '' || text === null) return
-    this.props.send(text)
+    this.props.send(text, this.props.authorUid)
     this.setState({text: ''})
   }
 
@@ -37,8 +37,10 @@ export class Composition extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {}
+function mapStateToProps(state) {
+  return {
+    authorUid: state.auth.user.uid
+  }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
