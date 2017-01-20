@@ -5,21 +5,20 @@ import { addMessage } from '../../actions';
 export class Composition extends React.Component {
   constructor() {
     super()
-    this.state = {text: ''}
+    this.state = {text: ''};
     this._updateText = this._updateText.bind(this);
     this._submit = this._submit.bind(this);
   }
 
   _updateText(e) {
-    this.setState({text: e.target.value})
+    this.setState({text: e.target.value});
   }
 
   _submit(e) {
     e.preventDefault();
-    const { text } = this.state
-    if (text === '' || text === null) return
-    this.props.send(text, this.props.author)
-    this.setState({text: ''})
+    if (this.state.text === '') return;
+    this.props.send(this.state.text, this.props.author);
+    this.setState({text: ''});
   }
 
   render() {
