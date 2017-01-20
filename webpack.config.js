@@ -1,24 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index',
-  ],
-
+var baseConfig = {
   output: {
     path: path.join(__dirname, '/bundle'),
-    publicPath: '/static/',
+    publicPath: '/',
     filename: 'index.js',
   },
-
-  devtool: 'eval-source-maps',
 
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
   ],
 
   resolve: {
@@ -43,3 +39,24 @@ module.exports = {
     ]
   }
 };
+
+var envConfig = {};
+
+if (process.env.NODE_ENV === 'production') {
+  envConfig = {
+    entry: [
+      './src/index',
+    ],
+  }
+
+} else {
+  envConfig = {
+    entry: [
+      'webpack-hot-middleware/client',
+      './src/index',
+    ],
+    devtool: 'eval-source-map',
+  }
+}
+
+module.exports = Object.assign(baseConfig, envConfig);
