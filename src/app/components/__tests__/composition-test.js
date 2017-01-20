@@ -12,9 +12,10 @@ describe('Composition', ()=>{
   });
 
   describe('Layout', ()=>{
-    it('has a text input', ()=>{
+    it('has a text input with value set to state', ()=>{
       const input = composition.find('input[type="text"]');
       expect(input.length).to.eql(1);
+      expect(input.prop('value')).to.eql(composition.state('text'));
     });
 
     it('has a send button', ()=>{

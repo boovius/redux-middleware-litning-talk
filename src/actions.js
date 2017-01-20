@@ -4,10 +4,10 @@ import {
   TOGGLE_AUTH
 } from './constants';
 
-export function addMessage(text, authorUid) {
+export function addMessage(text, author) {
   return {
     type: ADD_MESSAGE,
-    message: { text, authorUid }
+    message: { text, author }
   }
 }
 

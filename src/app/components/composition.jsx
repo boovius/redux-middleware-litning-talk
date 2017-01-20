@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ADD_MESSAGE } from '../../constants';
 import { addMessage } from '../../actions';
 
 export class Composition extends React.Component {
   constructor() {
     super()
+    this.state = {text: ''}
     this._updateText = this._updateText.bind(this);
     this._submit = this._submit.bind(this);
   }
@@ -18,7 +18,7 @@ export class Composition extends React.Component {
     e.preventDefault();
     const { text } = this.state
     if (text === '' || text === null) return
-    this.props.send(text, this.props.authorUid)
+    this.props.send(text, this.props.author)
     this.setState({text: ''})
   }
 
@@ -29,6 +29,7 @@ export class Composition extends React.Component {
           <input
             type='text'
             onChange={this._updateText}
+            value={this.state.text}
           />
           <input type='submit' value='send'/>
         </form>
@@ -39,13 +40,13 @@ export class Composition extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    authorUid: state.auth.user.uid
+    author: state.auth.user
   }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    send: (text) => { dispatch(addMessage(text)) }
+    send: (text, author) => { dispatch(addMessage(text, author)) }
   }
 }
 
