@@ -13,7 +13,6 @@ export class Login extends Component {
     e.preventDefault();
 
     auth.signInWithPopup(facebookAuthProvider).then((authResult) => {
-      debugger;
       const user = {
         uid: authResult.user.uid,
         displayName: authResult.user.displayName,
