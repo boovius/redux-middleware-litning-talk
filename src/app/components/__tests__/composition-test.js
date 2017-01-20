@@ -1,6 +1,6 @@
 import { Composition } from '../composition';
 
-describe.only('Composition', ()=>{
+describe('Composition', ()=>{
   let action, composition, button, form;
 
   beforeEach(()=>{
@@ -12,9 +12,14 @@ describe.only('Composition', ()=>{
   });
 
   describe('Layout', ()=>{
-    it('has a text input', ()=>{
+    it('has a text input with value set to state', ()=>{
+      const text = 'text';
+      composition.setState({text})
+
       const input = composition.find('input[type="text"]');
+
       expect(input.length).to.eql(1);
+      expect(input.prop('value')).to.eql(composition.state('text'));
     });
 
     it('has a send button', ()=>{
@@ -50,18 +55,6 @@ describe.only('Composition', ()=>{
 
       context('given text is empty', ()=>{
         const textInput = '';
-
-        it('sends text on state to action',()=>{
-          composition.setState({text: textInput});
-
-          form.simulate('submit');
-
-          expect(action.called).to.eql(false)
-        });
-      });
-
-      context('given text is null', ()=>{
-        const textInput = null;
 
         it('sends text on state to action',()=>{
           composition.setState({text: textInput});

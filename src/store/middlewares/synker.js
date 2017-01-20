@@ -1,10 +1,8 @@
 import { ADD_MESSAGE } from '../../constants'
-import { messagesRef } from '../../database'
+import { messagesRef } from '../../config/firebase'
 
 const synker = store => next => action => {
   let result;
-
-  console.log('in synker')
 
   if (action.type === ADD_MESSAGE) {
     result = next(action)
