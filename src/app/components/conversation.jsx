@@ -4,16 +4,11 @@ import Message from './message';
 
 export class Conversation extends Component {
   _renderMessages() {
-    const { messages, user } = this.props;
-    return messages.map((message) => {
-      const authored = message.authorUid === user.uid;
+    return this.props.messages.map((message, i) => {
       return(
         <Message
           key={i}
-          authored={authored}
-          author={user.displayName}
-          text={m.text}
-          sunk={m.sunk}
+          message={message}
           />
       )
     });
@@ -30,8 +25,7 @@ export class Conversation extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    messages: state.messages,
-    user: state.user
+    messages: state.messages
   }
 }
 
