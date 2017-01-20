@@ -9,12 +9,12 @@
     width: 40%;
   }
   .authored {
-    background-color: blue;
+    background-color: $denim;
     float: right;
     text-align: right;
   }
   .sunk {
-    box-shadow: 2px 2px 2px green;
+    box-shadow: 1px 1px 1px black;
   }
 }
 .message-container:after {

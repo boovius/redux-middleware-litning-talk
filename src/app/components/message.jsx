@@ -21,6 +21,7 @@ export class Message extends Component {
       <div className='message-container'>
         <div className={this._classes()}>
           <span className='text'>{this.props.message.text}</span>
+          <span> - </span>
           <span className='author'>{this._author()}</span>
         </div>
       </div>
