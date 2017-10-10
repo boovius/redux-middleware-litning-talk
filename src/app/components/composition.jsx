@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../../actions';
+import { messagesRef } from '../../config/firebase'
 
 export class Composition extends React.Component {
   constructor() {
@@ -17,7 +18,9 @@ export class Composition extends React.Component {
   _submit(e) {
     e.preventDefault();
     if (this.state.text === '') return;
-    this.props.send(this.state.text, this.props.author);
+    const action = addMessage(this.state.text, this.props.author)
+    messagesRef.push(action.message, () => {});
+    this.props.send(action);
     this.setState({text: ''});
   }
 
@@ -45,7 +48,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    send: (text, author) => { dispatch(addMessage(text, author)) }
+    send: (action) => { dispatch(action) }
   }
 }
 
