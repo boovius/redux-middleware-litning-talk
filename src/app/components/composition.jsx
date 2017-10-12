@@ -20,7 +20,7 @@ export class Composition extends React.Component {
     if (this.state.text === '') return;
     const action = addMessage(this.state.text, this.props.author)
     this.props.send(action);
-    messagesRef.push(action.message, () => {});
+    //    messagesRef.push(action.message, () => {});
     this.setState({text: ''});
   }
 
